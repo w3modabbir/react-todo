@@ -4,12 +4,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCztX_9nVaaC38L-_xTJWFoUzcpQgr3QUU",
-  authDomain: "my-chating-a4c9e.firebaseapp.com",
-  projectId: "my-chating-a4c9e",
-  storageBucket: "my-chating-a4c9e.appspot.com",
-  messagingSenderId: "1000761861317",
-  appId: "1:1000761861317:web:a7846537144af80fe9bcac"
+  apiKey: "AIzaSyCxOCBWhGdXUR0D0d_faiXloOcWhoVpH7U",
+  authDomain: "todo-list-f97f6.firebaseapp.com",
+  projectId: "todo-list-f97f6",
+  storageBucket: "todo-list-f97f6.appspot.com",
+  messagingSenderId: "1024832129400",
+  appId: "1:1024832129400:web:b2e450811b01fe9e93608d"
 };
 
 // Initialize Firebase
