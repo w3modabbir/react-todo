@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+ul,ol{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6{
+    line-height: 0.8;
+}
+
+
+/*=============== todo part start here ============== */
+.todo_main{
+    background-image: linear-gradient(rgba(243, 129, 129, 0.9), rgba(252, 227, 138, 0.9));
+    width: 100%;
+    height: 100vh;
+
+}
+header{
+    padding-top: 100px;
+}
+header h2{
+    color: #fff;
+    font-size: 46px;
+    font-weight: 700;
+    text-transform: capitalize;
+    text-align: center;
+}
+.todo_main form{
+    text-align: center;
+    padding-top: 60px;
+    margin: 0 auto;
+
+}
+.todo_main form input{
+    width: 400px;
+    height: 60px;
+    border: 0;
+    outline: none;
+    padding: 10px 30px;
+    color: #444;
+    font-size: 18px;
+    text-transform: capitalize;
+    border: 2px solid #DE3163;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.todo_main form input::placeholder{
+    color: #222;
+    font-size: 18px;
+}
+.todo_main form button{
+    width: 80px;
+    height: 60px;
+    border: 0;
+    outline: none;
+    background-color: teal;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    margin-left: 6px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-transform: capitalize;
+}
+/*=============== todo part end ====================== */
