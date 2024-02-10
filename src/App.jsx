@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
 import './style.css'
-import { getDatabase, ref, set, push, onValue, remove  } from "firebase/database";
+import { getDatabase, ref, set, push, onValue, remove, update  } from "firebase/database";
 import { ImCross } from "react-icons/im";
+import { TbEdit } from "react-icons/tb";
 
 function App() {
   const db = getDatabase();
   const [text, setText] = useState("")
   let [todoitem, setTodoItem] = useState([])
+  let [togolebtn, setTogolBtn] = useState(false)
+  let [todoid, setTodoId] = useState()
 
   const handleForm = (e) =>{
     setText(e.target.value);
@@ -20,6 +23,7 @@ function App() {
           todoText: text, 
       }); 
       }
+      setText("")
   }
 
   // firebase Read data operation
@@ -36,8 +40,27 @@ function App() {
 
 // delete operation
 let handleDelete = (id) =>{
-  console.log(id);
-    remove(ref(db,'alltodo/' + id ))
+    remove(ref(db,'alltodo/' + id )).then(()=>{
+      console.log("delete hoiice");
+    })
+}
+
+// Update operation 
+
+let handleUpdate = (item) =>{
+  setTodoId(item.id)
+  setText(item.todoText)
+  setTogolBtn(true)
+}
+
+// edite operation
+let hendleEdite = (e) =>{
+  e.preventDefault()
+  update(ref(db, "alltodo/" + todoid), {
+    todoText: text,
+  })
+  setTogolBtn(false)
+  setText("")
 }
 
   return (
@@ -49,8 +72,13 @@ let handleDelete = (id) =>{
           </header>
             <div>
                 <form action="#" method='post'>
-                <input onChange={handleForm} type="text"  placeholder='Enter your text'/>
-                <button onClick={hendleAdd}>add</button>
+                <input onChange={handleForm} value={text} type="text"  placeholder='Enter your text'/>
+                {togolebtn
+                  ?
+                  <button onClick={hendleEdite}>edite</button>
+                  :
+                  <button onClick={hendleAdd}>add</button>
+                }
               </form>
               </div>          
               <div className="contentt">
@@ -60,6 +88,7 @@ let handleDelete = (id) =>{
                       <li 
                         key={index.id}>{item.todoText}
                         <button className='button' onClick={()=>handleDelete(item.id)}><ImCross /></button>
+                        <button className='button_update' onClick={()=>handleUpdate(item)}><TbEdit /></button>
                       </li> 
                      
                     </>

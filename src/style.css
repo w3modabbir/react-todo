@@ -116,10 +116,22 @@ ul li{
     color: #fff;
     position: absolute;
     top: 0;
+    right: -120px;
+    cursor: pointer;
+}
+.button_update{
+    width: 50px;
+    height: 50px;
+    border: 0;
+    outline: none;
+    background-color: teal;
+    color: #fff;
+    position: absolute;
+    top: 0;
     right: -61px;
     cursor: pointer;
 }
-.contentt ul .button svg{
+.contentt ul button svg{
    font-size: 20px;
 }
 
