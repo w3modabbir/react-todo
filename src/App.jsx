@@ -3,6 +3,9 @@ import './style.css'
 import { getDatabase, ref, set, push, onValue, remove, update  } from "firebase/database";
 import { ImCross } from "react-icons/im";
 import { TbEdit } from "react-icons/tb";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import TostyFy from './componant/TostyFy';
 
 function App() {
   const db = getDatabase();
@@ -41,12 +44,10 @@ function App() {
 // delete operation
 let handleDelete = (id) =>{
     remove(ref(db,'alltodo/' + id )).then(()=>{
-      console.log("delete hoiice");
     })
 }
 
 // Update operation 
-
 let handleUpdate = (item) =>{
   setTodoId(item.id)
   setText(item.todoText)
@@ -58,13 +59,33 @@ let hendleEdite = (e) =>{
   e.preventDefault()
   update(ref(db, "alltodo/" + todoid), {
     todoText: text,
+  }).then(()=>{
+    setTogolBtn(false)
+    setText("")
   })
-  setTogolBtn(false)
-  setText("")
 }
+// all delete opertion
+
+let handleAllCler = (e) =>{
+  e.preventDefault()
+  remove(ref(db, "alltodo"))
+  toast.success('Delete is Success', {
+    position: "top-right",
+    className:  'tostify',
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+}
+
 
   return (
     <>
+      <TostyFy/>
       {/*=============== todo part start here ================= */}
         <div className='todo_main'>
           <header>
@@ -79,21 +100,21 @@ let hendleEdite = (e) =>{
                   :
                   <button onClick={hendleAdd}>add</button>
                 }
+                <div>
+                  <button onClick={handleAllCler} className='allClear'>all clear</button>
+                </div>
               </form>
               </div>          
               <div className="contentt">
                 <ul className='item_main'>
-                  {todoitem.map((item, index)=>(
-                    <>
-                      <li 
-                        key={index.id}>{item.todoText}
-                        <button className='button' onClick={()=>handleDelete(item.id)}><ImCross /></button>
-                        <button className='button_update' onClick={()=>handleUpdate(item)}><TbEdit /></button>
-                      </li> 
-                     
-                    </>
-                  ))
-
+                  {
+                  todoitem.map((item, index)=>(
+                    <li 
+                      key={index} data={item}>{item.todoText}
+                      <button className='button' onClick={()=>handleDelete(item.id)}><ImCross /></button>
+                      <button className='button_update' onClick={()=>handleUpdate(item)}><TbEdit /></button>
+                    </li>   
+                    ))
                   }
                 </ul>
             </div>

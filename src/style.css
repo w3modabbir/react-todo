@@ -39,6 +39,9 @@ header h2{
     text-align: center;
     padding-top: 60px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 .todo_main form input{
@@ -82,9 +85,29 @@ header h2{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     text-transform: capitalize;
 }
+.todo_main form .allClear{
+    width: 110px;
+    height: 60px;
+    border: 0;
+    outline: none;
+    background-color: teal;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    margin-left: 6px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-transform: capitalize;
+}
 
 .contentt{
-    width: 450px;
+    width: 590px;
     margin:  0 auto;
     margin-top: 50px !important;
 }
@@ -133,6 +156,9 @@ ul li{
 }
 .contentt ul button svg{
    font-size: 20px;
+}
+.tostify{
+    background-color: red;
 }
 
 /*=============== todo part end ====================== */
