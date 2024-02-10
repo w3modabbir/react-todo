@@ -7,6 +7,8 @@
 
 ul,ol{
     list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 a{
     text-decoration: none;
@@ -82,7 +84,7 @@ header h2{
 }
 
 .contentt{
-    width: 500px;
+    width: 450px;
     margin:  0 auto;
     margin-top: 50px !important;
 }
@@ -93,13 +95,32 @@ ul li{
     height: 50px;
     line-height: 50px;
     padding: 0 20px;
-    position: relative;
-    display: block;
-    margin: 10px;
+    margin: 15px 0;
     text-transform: capitalize;
     font-size: 18px;
     font-weight: 400;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transition: all linear .3s;
+    -webkit-transition: all linear .3s;
+    -moz-transition: all linear .3s;
+    -ms-transition: all linear .3s;
+    -o-transition: all linear .3s;
+    position: relative;
 }
+.contentt ul .button{
+    width: 50px;
+    height: 50px;
+    border: 0;
+    outline: none;
+    background-color: teal;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: -61px;
+    cursor: pointer;
+}
+.contentt ul .button svg{
+   font-size: 20px;
+}
+
 /*=============== todo part end ====================== */

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './style.css'
-import { getDatabase, ref, set, push, onValue  } from "firebase/database";
+import { getDatabase, ref, set, push, onValue, remove  } from "firebase/database";
 import { ImCross } from "react-icons/im";
 
 function App() {
@@ -25,15 +25,20 @@ function App() {
   // firebase Read data operation
   useEffect(()=>{
     const todoRef = ref(db, 'alltodo');
-      onValue(todoRef, (snapshot) => {
-        let arr = []
-        snapshot.forEach((item)=>{
-          arr.push(item.val())
-        })
-        setTodoItem(arr)
+    onValue(todoRef, (snapshot) => {
+      let arr = []
+      snapshot.forEach((item)=>{
+        arr.push({...item.val(),id:item.key})
+      })
+      setTodoItem(arr)
     });
   },[])
 
+// delete operation
+let handleDelete = (id) =>{
+  console.log(id);
+    remove(ref(db,'alltodo/' + id ))
+}
 
   return (
     <>
@@ -43,24 +48,26 @@ function App() {
             <h2>Todo List </h2>
           </header>
             <div>
-              <form action="#" method='post'>
-              <input onChange={handleForm} type="text"  placeholder='Enter your text'/>
-              <button onClick={hendleAdd}>add</button>
-            </form>
-            </div>
-                   
-          <div className="contentt">
-            <ul>
-              {todoitem.map((item, index)=>(
-                <>
-                  <li key={index}>{item.todoText}</li> 
-                  <button><ImCross /></button>
-                </>
-              ))
+                <form action="#" method='post'>
+                <input onChange={handleForm} type="text"  placeholder='Enter your text'/>
+                <button onClick={hendleAdd}>add</button>
+              </form>
+              </div>          
+              <div className="contentt">
+                <ul className='item_main'>
+                  {todoitem.map((item, index)=>(
+                    <>
+                      <li 
+                        key={index.id}>{item.todoText}
+                        <button className='button' onClick={()=>handleDelete(item.id)}><ImCross /></button>
+                      </li> 
+                     
+                    </>
+                  ))
 
-              }
-            </ul>
-        </div>
+                  }
+                </ul>
+            </div>
         </div>
       {/*=============== todo part end ======================== */}
     </>
